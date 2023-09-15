@@ -5,6 +5,7 @@ platform :ios do
     setup_ci if ENV['CI']
     sync_code_signing(type: "appstore", readonly: true)
     app_store_connect_api_key(duration: 1200) if ENV['CI']
+    build_number = latest_testflight_build_number + 1
 
     exportOptionsFilePath = "#{Tempfile.new('exportOptions').path}.plist"
     File.write(exportOptionsFilePath, {
@@ -18,6 +19,7 @@ platform :ios do
       "--obfuscate",
       "--split-debug-info=debug-info",
       "--release",
+      "--build-number=#{build_number}",
       "--export-options-plist=#{exportOptionsFilePath}"
     )
     upload_to_testflight(

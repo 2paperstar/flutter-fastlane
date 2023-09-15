@@ -1,7 +1,7 @@
 name: flutter_fastlane
 description: A new Flutter project.
 publish_to: 'none'
-version: 0.1.1+3
+version: 0.1.1
 
 environment:
   sdk: '>=3.0.5 <4.0.0'
