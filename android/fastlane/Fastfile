@@ -8,4 +8,20 @@ platform :android do
       aab: "../build/app/outputs/bundle/release/app-release.aab",
     )
   end
+
+  lane :internal do
+    sh(
+      "flutter", "build", "appbundle",
+      "--obfuscate",
+      "--split-debug-info=build/app/outputs/symbols",
+      "--release",
+    )
+    upload_to_play_store(
+      aab: "../build/app/outputs/bundle/release/app-release.aab",
+      track: "internal",
+      skip_upload_metadata: true,
+      skip_upload_images: true,
+      skip_upload_screenshots: true,
+    )
+  end
 end
