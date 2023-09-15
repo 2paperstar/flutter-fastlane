@@ -8,7 +8,7 @@ on:
 jobs:
   build-and-upload:
     name: Build iOS App and Upload
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     steps:
       - uses: actions/checkout@v3
       - uses: shimataro/ssh-key-action@v2
