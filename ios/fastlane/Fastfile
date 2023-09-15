@@ -2,6 +2,7 @@ default_platform(:ios)
 
 platform :ios do
   lane :internal do
+    setup_ci if ENV['CI']
     sync_code_signing(type: "appstore", readonly: true)
     app_store_connect_api_key(duration: 1200) if ENV['CI']
 
